@@ -1,0 +1,22 @@
+.group
+  = f.label :description, t("activerecord.attributes.okr.description", :default => "Description"), :class => :label
+  = f.text_area :description, :class => 'text_area'
+  %span.description Ex: a simple text
+.group
+  = f.label :objective, t("activerecord.attributes.okr.objective", :default => "Objective"), :class => :label
+  = f.text_area :objective, :class => 'text_area'
+  %span.description Ex: a simple text
+.group
+  = f.label :alignment, t("activerecord.attributes.okr.alignment", :default => "Alignment"), :class => :label
+  = f.text_area :alignment, :class => 'text_area'
+  %span.description Ex: a simple text
+.group
+  = f.simple_fields_for :key_results do |builder|
+    = render 'key_result_fields', f: builder
+  = link_to_add_fields "Add Key Result", f, :key_results
+.group.navform.wat-cf
+  %button.button{:type => "submit"}
+    = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  %span.text_button_padding= t("web-app-theme.or", :default => "or")
+  = link_to t("web-app-theme.cancel", :default => "Cancel"), okrs_path, :class => "text_button_padding link_button"
