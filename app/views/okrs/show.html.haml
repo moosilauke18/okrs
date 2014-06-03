@@ -21,7 +21,12 @@
           = t("activerecord.attributes.okr.alignment", :default => t("activerecord.labels.alignment", :default => "Alignment"))
           \:
         = @okr.alignment
+      %p
+        %b
+        -@okr.key_results.each do |kr|
+          %b Key Result
+          \:
+          = kr.result
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_okr_path(@okr), :class => "button"
-        = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), okr_path(@okr), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 - content_for :sidebar, render(:partial => 'sidebar')

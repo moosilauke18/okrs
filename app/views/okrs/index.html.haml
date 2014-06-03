@@ -14,6 +14,9 @@
           %th
             = t("activerecord.attributes.okr.description", :default => t("activerecord.labels.description", :default => "Description"))
           %th= t("web-app-theme.created_at", :default => "Created at")
+          %th Objective
+          %th Alignment
+          %th User
           %th.last &nbsp;
         - @okrs.each do |okr|
           %tr{:class => cycle("odd", "even")}
@@ -23,11 +26,16 @@
               = link_to okr.description, okr_path(okr)
             %td
               = okr.created_at
+            %td
+              = okr.objective
+            %td
+              = okr.alignment
+            %td
+              = okr.user.email
             %td.last
               = link_to "#{t("web-app-theme.show", :default => "Show")}", okr_path(okr)
               |
               \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_okr_path(okr)} |
-              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", okr_path(okr), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
 - content_for :sidebar, render(:partial => 'sidebar')

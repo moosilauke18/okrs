@@ -1,4 +1,5 @@
 Okrs::Application.routes.draw do
+  devise_for :users
   resources :okrs
   root 'okrs#index'
 

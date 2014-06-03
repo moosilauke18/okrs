@@ -14,7 +14,8 @@ class OkrsController < ApplicationController
 
   # GET /okrs/new
   def new
-    @okr = Okr.new
+      @user = current_user
+    @okr = @user.okrs.new
     @okr.key_results.build
   end
 
@@ -25,7 +26,8 @@ class OkrsController < ApplicationController
   # POST /okrs
   # POST /okrs.json
   def create
-    @okr = Okr.new(okr_params)
+      @user = current_user
+    @okr = @user.okrs.new(okr_params)
 
     respond_to do |format|
       if @okr.save
