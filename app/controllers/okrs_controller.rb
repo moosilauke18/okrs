@@ -4,7 +4,8 @@ class OkrsController < ApplicationController
   # GET /okrs
   # GET /okrs.json
   def index
-    @okrs = Okr.all
+      @user = current_user
+    @okrs = @user.okrs.all
   end
 
   # GET /okrs/1

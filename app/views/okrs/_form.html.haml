@@ -1,4 +1,8 @@
 .group
+  = f.label :month, t("activerecord.attributes.okr.description", :default => "Description"), :class => :label
+  = f.input :month, collection: Date::MONTHNAMES, default: Date::MONTHNAMES[Time.now.month]
+  %span.description Ex: a simple text
+.group
   = f.label :description, t("activerecord.attributes.okr.description", :default => "Description"), :class => :label
   = f.text_area :description, :class => 'text_area'
   %span.description Ex: a simple text
@@ -10,6 +14,7 @@
   = f.label :alignment, t("activerecord.attributes.okr.alignment", :default => "Alignment"), :class => :label
   = f.text_area :alignment, :class => 'text_area'
   %span.description Ex: a simple text
+%h4 Key Results
 .group
   = f.simple_fields_for :key_results do |builder|
     = render 'key_result_fields', f: builder

@@ -1,0 +1,14 @@
+%h1
+  = Date::MONTHNAMES[Time.now.month]
+  OKRs
+    
+- content_for :title, "Hops"
+%table.table.table-hover
+  %thead
+    %tr
+      User
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= show_or_new_okrs(user)
